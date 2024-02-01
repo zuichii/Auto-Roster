@@ -6,19 +6,19 @@
 
 class Employee{
     public:
-    
+
     int id;
-    bool avail_morning;
-    bool avail_afternoon;
-    bool avail_evening;
-    std::vector<std::string> role_pref;
+    bool availMorning;
+    bool availAfternoon;
+    bool availEvening;
+    std::vector<std::string> rolePref;
 
     Employee(int id, bool morning, bool afternoon, bool evening, std::vector<std::string> roles){
         this->id = id;
-        this->avail_morning = morning;
-        this->avail_afternoon = afternoon;
-        this->avail_evening = evening;
-        this->role_pref = roles;
+        this->availMorning = morning;
+        this->availAfternoon = afternoon;
+        this->availEvening = evening;
+        this->rolePref = roles;
     } 
 };
 #endif
