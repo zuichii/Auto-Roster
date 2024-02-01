@@ -5,6 +5,8 @@
 #include <vector>
 
 class Employee{
+    public:
+    
     int id;
     bool avail_morning;
     bool avail_afternoon;
