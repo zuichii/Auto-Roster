@@ -5,10 +5,14 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <sstream>
+#include "Employee.hpp"
 
 class ExcelHelper{
     public:
     static std::vector<std::vector<std::string>> readExcel(std::string filePath);
+    static void writeExcel(Employee emp, std::string filePath);
+    static int generateId(std::string filePath);
 
 };
 
@@ -21,7 +25,7 @@ std::vector<std::vector<std::string>> ExcelHelper::readExcel(std::string filePat
         return data;
     }
 
-    std::string line; // skip the first line of headings
+    std::string line; // skip header line
     std::getline(file, line);
 
     while(std::getline(file, line)){
@@ -37,5 +41,30 @@ std::vector<std::vector<std::string>> ExcelHelper::readExcel(std::string filePat
     file.close();
     return data;
 };
+
+void writeExcel(Employee emp, std::string filePath){
+    std::ofstream file(filePath, std::ios::app);
+}
+
+int ExcelHelper::generateId(std::string filePath){
+    std::ifstream file(filePath);
+    if(!file.is_open()){
+        std::cerr << "Unable to open file: " << filePath << std::endl; 
+        return -1;
+    }
+    int id = 0;
+    std::string line;
+    std::getline(file, line); //skip header line
+    
+    while(std::getline(file, line)){
+        
+        std::istringstream iss(line);
+        std::string token;
+        std::getline(iss, token, ',');
+        id = std::stoi(token);
+    }
+    file.close();
+    return id+1;
+}
 
 #endif
