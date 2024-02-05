@@ -50,9 +50,14 @@ void writeExcel(Employee emp, std::string filePath){
     }
     file << std::endl;
     file << emp.id << "," << emp.email << "," << emp.name << ","
-         << emp.morning << "," << emp.afternoon << "," << emp.evening << ","
-         << emp.softgoods << "," << emp.hardgoods << "," << emp.checkouts << ","
-         << emp.customer_service << "," << emp.nightfill;
+     << (emp.morning ? "true" : "false") << ","
+     << (emp.afternoon ? "true" : "false") << ","
+     << (emp.evening ? "true" : "false") << ","
+     << (emp.softgoods ? "true" : "false") << ","
+     << (emp.hardgoods ? "true" : "false") << ","
+     << (emp.checkouts ? "true" : "false") << ","
+     << (emp.customer_service ? "true" : "false") << ","
+     << (emp.nightfill ? "true" : "false");
 
     file.close();
 }
