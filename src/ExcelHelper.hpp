@@ -42,7 +42,7 @@ std::vector<std::vector<std::string>> ExcelHelper::readExcel(std::string filePat
     return data;
 };
 
-void writeExcel(Employee emp, std::string filePath){
+void ExcelHelper::writeExcel(Employee emp, std::string filePath){
     std::ofstream file(filePath, std::ios::app);
 
     if(!file.is_open()){

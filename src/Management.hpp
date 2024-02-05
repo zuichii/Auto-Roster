@@ -55,6 +55,6 @@ void Management::addEmployee(){
     std::cin.ignore(); 
 
     Employee emp(id, name, email, morning, afternoon, evening, softgoods, hardgoods, checkouts, customer_service, nightfill);
-    writeExcel(emp, "../tests/test_employees.csv");
+    ExcelHelper::writeExcel(emp, "../tests/test_employees.csv");
 }
 #endif
