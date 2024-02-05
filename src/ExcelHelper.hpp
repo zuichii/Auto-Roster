@@ -44,6 +44,17 @@ std::vector<std::vector<std::string>> ExcelHelper::readExcel(std::string filePat
 
 void writeExcel(Employee emp, std::string filePath){
     std::ofstream file(filePath, std::ios::app);
+
+    if(!file.is_open()){
+        std::cerr << "Unable to open file: " << filePath << std::endl;
+    }
+    file << std::endl;
+    file << emp.id << "," << emp.email << "," << emp.name << ","
+         << emp.morning << "," << emp.afternoon << "," << emp.evening << ","
+         << emp.softgoods << "," << emp.hardgoods << "," << emp.checkouts << ","
+         << emp.customer_service << "," << emp.nightfill;
+
+    file.close();
 }
 
 int ExcelHelper::generateId(std::string filePath){
@@ -66,5 +77,4 @@ int ExcelHelper::generateId(std::string filePath){
     file.close();
     return id+1;
 }
-
 #endif

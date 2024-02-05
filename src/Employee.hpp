@@ -8,17 +8,21 @@ class Employee{
     public:
 
     int id;
-    bool availMorning;
-    bool availAfternoon;
-    bool availEvening;
-    std::vector<std::string> rolePref;
+    std::string name, email;
+    bool morning, afternoon, evening, softgoods, hardgoods, checkouts, customer_service, nightfill;
 
-    Employee(int id, bool morning, bool afternoon, bool evening, std::vector<std::string> roles){
+    Employee(int id, std::string email, std::string name, bool morning, bool afternoon, bool evening, bool softgoods, bool hardgoods, bool checkouts, bool customer_service, bool nightfill){
         this->id = id;
-        this->availMorning = morning;
-        this->availAfternoon = afternoon;
-        this->availEvening = evening;
-        this->rolePref = roles;
+        this->name = name;
+        this->email = email;
+        this->morning = morning;
+        this->afternoon = afternoon;
+        this->evening = evening;
+        this->softgoods = softgoods;
+        this->hardgoods = hardgoods;
+        this->checkouts = checkouts;
+        this->customer_service = customer_service;
+        this->nightfill = nightfill;
     } 
 };
 #endif
