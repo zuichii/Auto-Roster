@@ -3,12 +3,14 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Employee.hpp"
 #include "ExcelHelper.hpp"
 
 class Management{
     public:
     static void addEmployee();
+    static std::vector<Employee> getEmployees();
 };
 
 void Management::addEmployee(){
@@ -56,5 +58,29 @@ void Management::addEmployee(){
 
     Employee emp(id, name, email, morning, afternoon, evening, softgoods, hardgoods, checkouts, customer_service, nightfill);
     ExcelHelper::writeExcel(emp, "../tests/test_employees.csv");
+}
+
+std::vector<Employee> Management::getEmployees(){
+    std::vector<std::vector<std::string>> data = ExcelHelper::readExcel("../tests/test_employees.csv");
+    std::vector<Employee> list;
+    for(int i = 0; i < 10; i++){
+        std::vector<std::string> row = data[i];
+
+        int id = std::stoi(row[0]);
+        std::string name = row[1];
+        std::string email = row[2];
+        bool morning = (row[3] == "true");
+        bool afternoon = (row[4] == "true");
+        bool evening = (row[5] == "true");
+        bool softgoods = (row[6] == "true");
+        bool hardgoods = (row[7] == "true");
+        bool checkouts = (row[8] == "true");
+        bool customerService = (row[9] == "true");
+        bool nightfill = (row[10] == "true");
+
+        Employee emp(id, name, email, morning, afternoon, evening, softgoods, hardgoods, checkouts, customerService, nightfill);
+        list.push_back(emp);
+    }
+    return list;
 }
 #endif
