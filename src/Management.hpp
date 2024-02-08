@@ -4,6 +4,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
+#include <random>
+#include <algorithm>
 #include "Employee.hpp"
 #include "ExcelHelper.hpp"
 
@@ -11,6 +14,7 @@ class Management{
     public:
     static void addEmployee();
     static std::vector<Employee> getEmployees();
+    static std::map<int, std::vector<std::string>> generateRoster(std::vector<Employee> employees);
 };
 
 void Management::addEmployee(){
@@ -82,5 +86,60 @@ std::vector<Employee> Management::getEmployees(){
         list.push_back(emp);
     }
     return list;
+}
+
+std::map<int, std::vector<std::string>> createWeeklyRoster(std::vector<Employee> employees) {
+    std::map<int, std::vector<std::string>> weeklyRoster;
+    const int numSoftgoodsShifts = 2;
+    const int numHardgoodsShifts = 2;
+    const int numCheckoutsShifts = 2;
+    const int numCustomerServiceShifts = 1;
+    const int numNightfillShifts = 1;
+
+    std::shuffle(employees.begin(), employees.end(), std::default_random_engine());
+
+    for(int day = 0; day < 7; ++day){
+        std::vector<std::string> shifts;
+        int softgoodsCounter = 0;
+        int hardgoodsCounter = 0;
+        int checkoutsCounter = 0;
+        int customerServiceCounter = 0;
+        int nightfillCounter = 0;
+
+        for(auto employee : employees){
+            // Morning and evening shifts
+            if((employee.morning || employee.afternoon) &&
+                (employee.softgoods || employee.hardgoods || employee.checkouts || employee.customer_service)){
+                if(employee.softgoods && softgoodsCounter < numSoftgoodsShifts){
+                    shifts.push_back("Morning shift (Softgoods) - " + employee.name);
+                    softgoodsCounter++;
+                }else if(employee.hardgoods && hardgoodsCounter < numHardgoodsShifts){
+                    shifts.push_back("Morning shift (Hardgoods) - " + employee.name);
+                    hardgoodsCounter++;
+                }else if(employee.checkouts && checkoutsCounter < numCheckoutsShifts){
+                    shifts.push_back("Morning shift (Checkouts) - " + employee.name);
+                    checkoutsCounter++;
+                }else if(employee.customer_service && customerServiceCounter < numCustomerServiceShifts){
+                    shifts.push_back("Morning shift (Customer Service) - " + employee.name);
+                    customerServiceCounter++;
+                }
+            }
+
+            // Nightfill shifts
+            if(employee.evening && employee.nightfill && nightfillCounter < numNightfillShifts){
+                shifts.push_back("Evening shift (Nightfill) - " + employee.name);
+                nightfillCounter++;
+            }
+
+            // Check if all shifts are filled for the day
+            if(softgoodsCounter == numSoftgoodsShifts && hardgoodsCounter == numHardgoodsShifts &&
+                checkoutsCounter == numCheckoutsShifts && customerServiceCounter == numCustomerServiceShifts &&
+                nightfillCounter == numNightfillShifts){
+                break; 
+            }
+        }
+        weeklyRoster[day] = shifts;
+    }
+    return weeklyRoster;
 }
 #endif
