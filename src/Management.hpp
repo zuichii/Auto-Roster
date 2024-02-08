@@ -65,9 +65,9 @@ void Management::addEmployee(){
 }
 
 std::vector<Employee> Management::getEmployees(){
-    std::vector<std::vector<std::string>> data = ExcelHelper::readExcel("../tests/test_employees.csv");
+    std::vector<std::vector<std::string>> data = ExcelHelper::readExcel("../src/employees.csv");
     std::vector<Employee> list;
-    for(int i = 0; i < 10; i++){
+    for(int i = 0; i < data.size(); i++){
         std::vector<std::string> row = data[i];
 
         int id = std::stoi(row[0]);
@@ -88,7 +88,7 @@ std::vector<Employee> Management::getEmployees(){
     return list;
 }
 
-std::map<int, std::vector<std::string>> createWeeklyRoster(std::vector<Employee> employees) {
+std::map<int, std::vector<std::string>> Management::generateRoster(std::vector<Employee> employees) {
     std::map<int, std::vector<std::string>> weeklyRoster;
     const int numSoftgoodsShifts = 2;
     const int numHardgoodsShifts = 2;
@@ -96,9 +96,8 @@ std::map<int, std::vector<std::string>> createWeeklyRoster(std::vector<Employee>
     const int numCustomerServiceShifts = 1;
     const int numNightfillShifts = 1;
 
-    std::shuffle(employees.begin(), employees.end(), std::default_random_engine());
-
     for(int day = 0; day < 7; ++day){
+        std::shuffle(employees.begin(), employees.end(), std::default_random_engine());
         std::vector<std::string> shifts;
         int softgoodsCounter = 0;
         int hardgoodsCounter = 0;
