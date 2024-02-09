@@ -1,4 +1,5 @@
 #include "../src/ExcelHelper.hpp"
+#include "../src/Management.hpp"
 #include <iostream>
 #include <cassert>
 #include <string>
@@ -25,7 +26,17 @@ void test_readExcel(){
     }
 }
 
+void test_generateCSV(){
+    std::vector<Employee> list = Management::getEmployees();
+    
+    std::map<int, std::vector<std::string>> roster = Management::generateRoster(list);
+
+    ExcelHelper::createCSV(roster);
+}
+
 int main(){
-    test_readExcel();
-    test_generateId();
+    // test_readExcel();
+    // test_generateId();
+    test_generateCSV();
+    
 }

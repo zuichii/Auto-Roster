@@ -26,7 +26,10 @@ void testGenerateRoster(){
 
     std::map<int, std::vector<std::string>> roster = Management::generateRoster(list);
     
-    for(auto [day, shifts] : roster){
+    for(auto it = roster.begin(); it != roster.end(); it++){
+        int day = it->first;
+        std::vector<std::string> shifts = it->second;
+        
         std::cout << "Day " << day + 1 << std::endl;
         for(auto shift : shifts){
             std::cout << shift << std::endl;

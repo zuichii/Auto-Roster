@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 #include <fstream>
 #include <sstream>
 #include "Employee.hpp"
@@ -13,6 +14,7 @@ class ExcelHelper{
     static std::vector<std::vector<std::string>> readExcel(std::string filePath);
     static void writeExcel(Employee emp, std::string filePath);
     static int generateId(std::string filePath);
+    static void createCSV(std::map<int, std::vector<std::string>> roster);
 
 };
 
@@ -82,4 +84,29 @@ int ExcelHelper::generateId(std::string filePath){
     file.close();
     return id+1;
 }
+
+void ExcelHelper::createCSV(std::map<int, std::vector<std::string>> roster){
+    std::ofstream file("../src/roster.csv");
+    if(!file.is_open()){
+        std::cerr << "Error: Could not open file for writing." << std::endl;
+        return;
+    }
+    // Header row
+    file << "Shift,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" << std::endl;
+    // Shifts
+    std::vector<std::string> daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    for(auto day : daysOfWeek){
+        file << "Morning,";
+        for(auto& shift : roster){
+            const std::vector<std::string> shifts = shift.second;
+            if (!shifts.empty()) {
+                file << shifts.front(); 
+            }
+            file << ",";
+        }
+        file << std::endl;
+    }
+    file.close();
+}
+
 #endif
