@@ -110,23 +110,23 @@ std::map<int, std::vector<std::string>> Management::generateRoster(std::vector<E
             if((employee.morning || employee.afternoon) &&
                 (employee.softgoods || employee.hardgoods || employee.checkouts || employee.customer_service)){
                 if(employee.softgoods && softgoodsCounter < numSoftgoodsShifts){
-                    shifts.push_back("Morning shift (Softgoods) - " + employee.name);
+                    shifts.push_back("Morning shift (Softgoods)," + employee.name);
                     softgoodsCounter++;
                 }else if(employee.hardgoods && hardgoodsCounter < numHardgoodsShifts){
-                    shifts.push_back("Morning shift (Hardgoods) - " + employee.name);
+                    shifts.push_back("Morning shift (Hardgoods)," + employee.name);
                     hardgoodsCounter++;
                 }else if(employee.checkouts && checkoutsCounter < numCheckoutsShifts){
-                    shifts.push_back("Morning shift (Checkouts) - " + employee.name);
+                    shifts.push_back("Morning shift (Checkouts)," + employee.name);
                     checkoutsCounter++;
                 }else if(employee.customer_service && customerServiceCounter < numCustomerServiceShifts){
-                    shifts.push_back("Morning shift (Customer Service) - " + employee.name);
+                    shifts.push_back("Morning shift (Customer Service)," + employee.name);
                     customerServiceCounter++;
                 }
             }
 
             // Nightfill shifts
             if(employee.evening && employee.nightfill && nightfillCounter < numNightfillShifts){
-                shifts.push_back("Evening shift (Nightfill) - " + employee.name);
+                shifts.push_back("Evening shift (Nightfill)," + employee.name);
                 nightfillCounter++;
             }
 
@@ -139,6 +139,7 @@ std::map<int, std::vector<std::string>> Management::generateRoster(std::vector<E
         }
         weeklyRoster[day] = shifts;
     }
+    ExcelHelper::createCSV(weeklyRoster);
     return weeklyRoster;
 }
 #endif

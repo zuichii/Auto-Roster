@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <set>
 #include <fstream>
 #include <sstream>
 #include "Employee.hpp"
@@ -15,7 +16,7 @@ class ExcelHelper{
     static void writeExcel(Employee emp, std::string filePath);
     static int generateId(std::string filePath);
     static void createCSV(std::map<int, std::vector<std::string>> roster);
-
+    static std::set<std::string> getEmails(std::string filepath);
 };
 
 std::vector<std::vector<std::string>> ExcelHelper::readExcel(std::string filePath){
@@ -85,28 +86,65 @@ int ExcelHelper::generateId(std::string filePath){
     return id+1;
 }
 
-void ExcelHelper::createCSV(std::map<int, std::vector<std::string>> roster){
+void ExcelHelper::createCSV(std::map<int, std::vector<std::string>> roster) {
     std::ofstream file("../src/roster.csv");
     if(!file.is_open()){
         std::cerr << "Error: Could not open file for writing." << std::endl;
         return;
     }
     // Header row
-    file << "Shift,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" << std::endl;
+    file << "Day,Shift Type,Employee Email" << std::endl;
+    
+
+    std::map<int, std::string> dayName = {
+        {0, "Monday"},
+        {1, "Tuesday"},
+        {2, "Wednesday"},
+        {3, "Thursday"},
+        {4, "Friday"},
+        {5, "Saturday"},
+        {6, "Sunday"}
+    };
+    
+    int totalDays = roster.size();
+    int currentDay = 1;
+
     // Shifts
-    std::vector<std::string> daysOfWeek = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-    for(auto day : daysOfWeek){
-        file << "Morning,";
-        for(auto& shift : roster){
-            const std::vector<std::string> shifts = shift.second;
-            if (!shifts.empty()) {
-                file << shifts.front(); 
-            }
-            file << ",";
+    for(auto [day, shifts] : roster){
+        for(auto shift : shifts){
+            file << dayName[day] << "," << shift; 
+            
+            if(currentDay != totalDays || shift != shifts.back()) file << std::endl;
         }
-        file << std::endl;
+        currentDay++;
     }
     file.close();
+}
+
+std::set<std::string> ExcelHelper::getEmails(std::string filepath){
+    std::set<std::string> emails;
+
+    std::ifstream file(filepath);
+    if(!file.is_open()){
+        std::cerr << "Error: Could not open file for writing." << std::endl;
+        return emails;
+    }
+
+    std::string line;
+    std::getline(file, line); // skip header row
+
+    while(std::getline(file, line)){
+        std::stringstream ss(line);
+        std::string token;
+
+        std::getline(ss, token, ','); // skip day
+        std::getline(ss, token, ','); // skip shift
+
+        std::getline(ss, token, ',');
+        emails.insert(token);
+    }
+    file.close();
+    return emails;
 }
 
 #endif

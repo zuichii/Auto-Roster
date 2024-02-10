@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cassert>
 #include <string>
+#include <set>
 
 void test_generateId(){
     std::string filePath = "test_employees.csv";
@@ -34,9 +35,17 @@ void test_createCSV(){
     ExcelHelper::createCSV(roster);
 }
 
+void test_getEmails(){
+    std::set<std::string> email_list;
+    
+    email_list = ExcelHelper::getEmails("test_roster.csv");
+
+    for(auto email : email_list) std::cout << email << std::endl;
+}
 int main(){
     // test_readExcel();
     // test_generateId();
-    test_createCSV();
-    
+    // test_createCSV();
+    test_getEmails();
+    std::cout << "All tests passed!" << std::endl;
 }

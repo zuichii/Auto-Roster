@@ -1,8 +1,50 @@
-Shift,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
-Morning,Morning shift (Checkouts) - noah@example.com,Evening shift (Nightfill) - charlie@example.com,Morning shift (Softgoods) - liam2@example.com,Morning shift (Customer Service) - charlotte@example.com,Morning shift (Checkouts) - liam@example.com,Morning shift (Softgoods) - lucas@example.com,Morning shift (Hardgoods) - bob@example.com,
+Day,Shift Type,Employee Email
+Monday,Morning shift (Checkouts),noah@example.com
+Monday,Morning shift (Customer Service),henry@example.com
+Monday,Morning shift (Checkouts),grace@example.com
+Monday,Evening shift (Nightfill),mia@example.com
+Monday,Morning shift (Softgoods),alice@example.com
+Monday,Morning shift (Softgoods),emily@example.com
+Monday,Morning shift (Hardgoods),bob@example.com
+Tuesday,Evening shift (Nightfill),charlie@example.com
+Tuesday,Morning shift (Softgoods),jack@example.com
+Tuesday,Morning shift (Customer Service),charlotte@example.com
+Tuesday,Morning shift (Softgoods),emily@example.com
+Tuesday,Morning shift (Checkouts),noah@example.com
+Tuesday,Morning shift (Hardgoods),bob@example.com
+Tuesday,Morning shift (Checkouts),liam@example.com
+Wednesday,Morning shift (Softgoods),liam2@example.com
+Wednesday,Morning shift (Checkouts),liam@example.com
+Wednesday,Evening shift (Nightfill),mia@example.com
+Wednesday,Morning shift (Customer Service),ava@example.com
+Wednesday,Morning shift (Softgoods),alice@example.com
+Wednesday,Morning shift (Checkouts),noah@example.com
+Wednesday,Morning shift (Hardgoods),bob@example.com
+Thursday,Morning shift (Customer Service),charlotte@example.com
+Thursday,Morning shift (Softgoods),lucas@example.com
+Thursday,Evening shift (Nightfill),isabel@example.com
+Thursday,Morning shift (Checkouts),noah@example.com
+Thursday,Morning shift (Checkouts),grace@example.com
+Thursday,Morning shift (Softgoods),jack@example.com
+Thursday,Morning shift (Hardgoods),bob@example.com
+Friday,Morning shift (Checkouts),liam@example.com
+Friday,Morning shift (Customer Service),diana@example.com
+Friday,Morning shift (Hardgoods),bob@example.com
+Friday,Evening shift (Nightfill),isabel@example.com
+Friday,Morning shift (Checkouts),grace@example.com
+Friday,Morning shift (Softgoods),emily@example.com
+Friday,Morning shift (Softgoods),liam2@example.com
+Saturday,Morning shift (Softgoods),lucas@example.com
+Saturday,Morning shift (Checkouts),grace@example.com
+Saturday,Morning shift (Customer Service),henry@example.com
+Saturday,Morning shift (Softgoods),alice@example.com
+Saturday,Morning shift (Checkouts),liam@example.com
+Saturday,Evening shift (Nightfill),frank@example.com
+Saturday,Morning shift (Hardgoods),bob@example.com
+Sunday,Morning shift (Hardgoods),bob@example.com
+Sunday,Morning shift (Softgoods),emily@example.com
+Sunday,Morning shift (Softgoods),jack@example.com
+Sunday,Evening shift (Nightfill),frank@example.com
+Sunday,Morning shift (Checkouts),noah@example.com
+Sunday,Morning shift (Customer Service),charlotte@example.com
+Sunday,Morning shift (Checkouts),liam@example.com
