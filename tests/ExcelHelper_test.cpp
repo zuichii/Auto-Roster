@@ -26,7 +26,7 @@ void test_readExcel(){
     }
 }
 
-void test_generateCSV(){
+void test_createCSV(){
     std::vector<Employee> list = Management::getEmployees();
     
     std::map<int, std::vector<std::string>> roster = Management::generateRoster(list);
@@ -37,6 +37,6 @@ void test_generateCSV(){
 int main(){
     // test_readExcel();
     // test_generateId();
-    test_generateCSV();
+    test_createCSV();
     
 }
