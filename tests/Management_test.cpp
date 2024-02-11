@@ -37,8 +37,15 @@ void testGenerateRoster(){
     }
 }
 
+void test_sendEmails(){
+    std::set<std::string> emails = ExcelHelper::getEmails("../src/roster.csv");
+    for(auto e: emails) std:: cout << e << std::endl;
+    Management::sendEmails(emails);
+}
+
 int main(){
     // testGetEmployees();
-    testGenerateRoster();
+    // testGenerateRoster();
+    test_sendEmails();
     std::cout << "Tests successful" << std::endl;
 }

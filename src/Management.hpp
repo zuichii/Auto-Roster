@@ -7,6 +7,7 @@
 #include <map>
 #include <random>
 #include <algorithm>
+#include <curl/curl.h>
 #include "Employee.hpp"
 #include "ExcelHelper.hpp"
 
@@ -15,6 +16,7 @@ class Management{
     static void addEmployee();
     static std::vector<Employee> getEmployees();
     static std::map<int, std::vector<std::string>> generateRoster(std::vector<Employee> employees);
+    static void sendEmails(std::set<std::string> recipients);
 };
 
 void Management::addEmployee(){
@@ -142,4 +144,58 @@ std::map<int, std::vector<std::string>> Management::generateRoster(std::vector<E
     ExcelHelper::createCSV(weeklyRoster);
     return weeklyRoster;
 }
+
+size_t writeFunction(void* ptr, size_t size, size_t nmemb, std::string* data){
+    data->append((char*)ptr, size * nmemb);
+    return size * nmemb;
+}
+
+void Management::sendEmails(std::set<std::string> emails){
+    CURL* curl;
+    CURLcode res;
+
+    // Initialize curl
+    curl = curl_easy_init();
+    if(curl){
+        // Set the SMTP server and port for Gmail
+        curl_easy_setopt(curl, CURLOPT_URL, "smtps://smtp.gmail.com:587");
+
+        // Set sender email address
+        curl_easy_setopt(curl, CURLOPT_MAIL_FROM, "example@gmail.com");
+
+        // Add recipient email addresses
+        struct curl_slist* recipients = NULL;
+        for (auto email : emails) {
+            recipients = curl_slist_append(recipients, email.c_str());
+        }
+        curl_easy_setopt(curl, CURLOPT_MAIL_RCPT, recipients);
+
+        // Set email subject
+        curl_easy_setopt(curl, CURLOPT_READDATA, "Subject: Test email\n");
+
+        // Set email body
+        std::string email_body = "Test email";
+        curl_easy_setopt(curl, CURLOPT_READFUNCTION, writeFunction);
+        curl_easy_setopt(curl, CURLOPT_READDATA, &email_body);
+
+        // Set username and password for authentication
+        curl_easy_setopt(curl, CURLOPT_USERNAME, "example@gmail.com");
+        curl_easy_setopt(curl, CURLOPT_PASSWORD, "password");
+
+        // Enable STARTTLS
+        curl_easy_setopt(curl, CURLOPT_USE_SSL, CURLUSESSL_ALL);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+
+        // Send the email
+        res = curl_easy_perform(curl);
+
+        // Check for errors
+        if(res != CURLE_OK) fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+
+        curl_slist_free_all(recipients);
+        curl_easy_cleanup(curl);
+    }
+}
+
 #endif
