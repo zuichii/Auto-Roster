@@ -42,10 +42,17 @@ void test_getEmails(){
 
     for(auto email : email_list) std::cout << email << std::endl;
 }
+
+void test_removeEmployee(){
+    ExcelHelper::removeEmployeeByID("test_employees.csv", 5);
+}
+
+
 int main(){
     // test_readExcel();
     // test_generateId();
     // test_createCSV();
-    test_getEmails();
+    // test_getEmails();
+    test_removeEmployee();
     std::cout << "All tests passed!" << std::endl;
 }

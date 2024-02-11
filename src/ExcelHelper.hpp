@@ -17,6 +17,7 @@ class ExcelHelper{
     static int generateId(std::string filePath);
     static void createCSV(std::map<int, std::vector<std::string>> roster);
     static std::set<std::string> getEmails(std::string filepath);
+    static void removeEmployeeByID(std::string filepath, int id);
 };
 
 std::vector<std::vector<std::string>> ExcelHelper::readExcel(std::string filePath){
@@ -145,6 +146,45 @@ std::set<std::string> ExcelHelper::getEmails(std::string filepath){
     }
     file.close();
     return emails;
+}
+
+void ExcelHelper::removeEmployeeByID(std::string filepath, int id){
+    std::vector<std::string> lines;
+
+    // Read the CSV file and store its contents in memory
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        std::cerr << "Error: Could not open file for reading." << std::endl;
+        return;
+    }
+    std::string line;
+    std::getline(file, line); // skip header row
+    lines.push_back(line);
+    while(std::getline(file, line)){
+        // Split the line into fields
+        std::stringstream ss(line);
+        std::string field;
+        std::getline(ss, field, ','); // Get id
+        int employeeID = std::stoi(field);
+
+        // If the ID does not match, store the line in memory
+        if(employeeID != id){
+            lines.push_back(line);
+        }
+    }
+    file.close();
+
+    // Write the updated data back to the CSV file
+    std::ofstream outfile(filepath);
+    if(!outfile.is_open()){
+        std::cerr << "Error: Could not open file for writing." << std::endl;
+        return;
+    }
+    for(auto line : lines){
+        outfile << line;
+        if(line != lines.back()) outfile << std::endl;        
+    }
+    outfile.close();
 }
 
 #endif
