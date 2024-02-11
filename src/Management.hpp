@@ -178,6 +178,16 @@ void Management::sendEmails(std::set<std::string> emails){
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, writeFunction);
         curl_easy_setopt(curl, CURLOPT_READDATA, &email_body);
 
+        // Attach file
+        curl_mime* mime;
+        curl_mimepart* part;
+        mime = curl_mime_init(curl);
+        part = curl_mime_addpart(mime);
+        curl_mime_name(part, "attachment");
+        curl_mime_filedata(part, "roster.csv");
+
+        curl_easy_setopt(curl, CURLOPT_MIMEPOST, mime);
+
         // Set username and password for authentication
         curl_easy_setopt(curl, CURLOPT_USERNAME, "example@gmail.com");
         curl_easy_setopt(curl, CURLOPT_PASSWORD, "password");
