@@ -17,6 +17,7 @@ class Management{
     static std::vector<Employee> getEmployees();
     static std::map<int, std::vector<std::string>> generateRoster(std::vector<Employee> employees);
     static void sendEmails(std::set<std::string> recipients);
+    static void removeEmployee();
 };
 
 void Management::addEmployee(){
@@ -63,7 +64,8 @@ void Management::addEmployee(){
     std::cin.ignore(); 
 
     Employee emp(id, name, email, morning, afternoon, evening, softgoods, hardgoods, checkouts, customer_service, nightfill);
-    ExcelHelper::writeExcel(emp, "../tests/test_employees.csv");
+    ExcelHelper::writeExcel(emp, "../src/employees.csv");
+    std::cout << "Employee added." << std::endl;
 }
 
 std::vector<Employee> Management::getEmployees(){
@@ -142,6 +144,7 @@ std::map<int, std::vector<std::string>> Management::generateRoster(std::vector<E
         weeklyRoster[day] = shifts;
     }
     ExcelHelper::createCSV(weeklyRoster);
+    std::cout << "Weekly roster created." << std::endl;
     return weeklyRoster;
 }
 
@@ -171,10 +174,18 @@ void Management::sendEmails(std::set<std::string> emails){
         curl_easy_setopt(curl, CURLOPT_MAIL_RCPT, recipients);
 
         // Set email subject
-        curl_easy_setopt(curl, CURLOPT_READDATA, "Subject: Test email\n");
+        curl_easy_setopt(curl, CURLOPT_READDATA, "Subject: Weekly Employee Schedule\n");
 
         // Set email body
-        std::string email_body = "Test email";
+        std::string email_body = "Hello Team,\n\n"
+                         "I hope this message finds you well.\n\n"
+                         "I am writing to inform you of some updates regarding our upcoming schedule.\n\n"
+                         "Please review the attached weekly schedule for [Week/Date Range]. If you have any conflicts or questions about your assigned shifts, "
+                         "please let me know as soon as possible so that we can make any necessary adjustments.\n\n"
+                         "Thank you for your attention to this matter.\n\n"
+                         "Best regards,\n"
+                         "Management";
+
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, writeFunction);
         curl_easy_setopt(curl, CURLOPT_READDATA, &email_body);
 
@@ -206,6 +217,21 @@ void Management::sendEmails(std::set<std::string> emails){
         curl_slist_free_all(recipients);
         curl_easy_cleanup(curl);
     }
+}
+
+void Management::removeEmployee(){
+    int id;
+    std::cout << "Enter ID of employee to be removed: " << std::endl;
+    std::cin >> id;
+
+    std::string ans;
+    std::cout << "Are you sure you want to remove employee " << id << "? (yes/no)." << std::endl;
+    std::cin >> ans;
+    if(ans == "yes"){
+        ExcelHelper::removeEmployeeByID("../src/employees.csv", id);
+        std::cout << "Employee " << id << " removed." << std::endl;
+    }
+    else return;
 }
 
 #endif

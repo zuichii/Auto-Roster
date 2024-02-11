@@ -43,9 +43,14 @@ void test_sendEmails(){
     Management::sendEmails(emails);
 }
 
+void test_removeEmployee(){
+    Management::removeEmployee();
+}
+
 int main(){
-    // testGetEmployees();
+    testGetEmployees();
     // testGenerateRoster();
-    test_sendEmails();
+    // test_sendEmails();
+    // test_removeEmployee();
     std::cout << "Tests successful" << std::endl;
 }

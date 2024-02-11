@@ -1,50 +1,50 @@
 Day,Shift Type,Employee Email
-Monday,Morning shift (Checkouts),noah@example.com
-Monday,Morning shift (Customer Service),henry@example.com
-Monday,Morning shift (Checkouts),grace@example.com
-Monday,Evening shift (Nightfill),mia@example.com
-Monday,Morning shift (Softgoods),alice@example.com
-Monday,Morning shift (Softgoods),emily@example.com
-Monday,Morning shift (Hardgoods),bob@example.com
-Tuesday,Evening shift (Nightfill),charlie@example.com
-Tuesday,Morning shift (Softgoods),jack@example.com
-Tuesday,Morning shift (Customer Service),charlotte@example.com
-Tuesday,Morning shift (Softgoods),emily@example.com
-Tuesday,Morning shift (Checkouts),noah@example.com
-Tuesday,Morning shift (Hardgoods),bob@example.com
-Tuesday,Morning shift (Checkouts),liam@example.com
-Wednesday,Morning shift (Softgoods),liam2@example.com
-Wednesday,Morning shift (Checkouts),liam@example.com
-Wednesday,Evening shift (Nightfill),mia@example.com
-Wednesday,Morning shift (Customer Service),ava@example.com
-Wednesday,Morning shift (Softgoods),alice@example.com
-Wednesday,Morning shift (Checkouts),noah@example.com
-Wednesday,Morning shift (Hardgoods),bob@example.com
-Thursday,Morning shift (Customer Service),charlotte@example.com
-Thursday,Morning shift (Softgoods),lucas@example.com
-Thursday,Evening shift (Nightfill),isabel@example.com
-Thursday,Morning shift (Checkouts),noah@example.com
-Thursday,Morning shift (Checkouts),grace@example.com
-Thursday,Morning shift (Softgoods),jack@example.com
-Thursday,Morning shift (Hardgoods),bob@example.com
-Friday,Morning shift (Checkouts),liam@example.com
-Friday,Morning shift (Customer Service),diana@example.com
-Friday,Morning shift (Hardgoods),bob@example.com
-Friday,Evening shift (Nightfill),isabel@example.com
-Friday,Morning shift (Checkouts),grace@example.com
-Friday,Morning shift (Softgoods),emily@example.com
-Friday,Morning shift (Softgoods),liam2@example.com
-Saturday,Morning shift (Softgoods),lucas@example.com
-Saturday,Morning shift (Checkouts),grace@example.com
-Saturday,Morning shift (Customer Service),henry@example.com
-Saturday,Morning shift (Softgoods),alice@example.com
-Saturday,Morning shift (Checkouts),liam@example.com
-Saturday,Evening shift (Nightfill),frank@example.com
-Saturday,Morning shift (Hardgoods),bob@example.com
-Sunday,Morning shift (Hardgoods),bob@example.com
-Sunday,Morning shift (Softgoods),emily@example.com
-Sunday,Morning shift (Softgoods),jack@example.com
-Sunday,Evening shift (Nightfill),frank@example.com
-Sunday,Morning shift (Checkouts),noah@example.com
-Sunday,Morning shift (Customer Service),charlotte@example.com
-Sunday,Morning shift (Checkouts),liam@example.com
+Monday,Morning shift (Checkouts),Noah
+Monday,Morning shift (Customer Service),Henry
+Monday,Morning shift (Checkouts),Grace
+Monday,Evening shift (Nightfill),Mia
+Monday,Morning shift (Softgoods),Alice
+Monday,Morning shift (Softgoods),Emily
+Monday,Morning shift (Hardgoods),Bob
+Tuesday,Evening shift (Nightfill),Charlie
+Tuesday,Morning shift (Softgoods),Jack
+Tuesday,Morning shift (Customer Service),Charlotte
+Tuesday,Morning shift (Softgoods),Emily
+Tuesday,Morning shift (Checkouts),Noah
+Tuesday,Morning shift (Hardgoods),Bob
+Tuesday,Morning shift (Checkouts),Liam
+Wednesday,Morning shift (Softgoods),Liam
+Wednesday,Morning shift (Checkouts),Liam
+Wednesday,Evening shift (Nightfill),Mia
+Wednesday,Morning shift (Customer Service),Ava
+Wednesday,Morning shift (Softgoods),Alice
+Wednesday,Morning shift (Checkouts),Noah
+Wednesday,Morning shift (Hardgoods),Bob
+Thursday,Morning shift (Customer Service),Charlotte
+Thursday,Morning shift (Softgoods),Lucas
+Thursday,Evening shift (Nightfill),Isabel
+Thursday,Morning shift (Checkouts),Noah
+Thursday,Morning shift (Checkouts),Grace
+Thursday,Morning shift (Softgoods),Jack
+Thursday,Morning shift (Hardgoods),Bob
+Friday,Morning shift (Checkouts),Liam
+Friday,Morning shift (Customer Service),Diana
+Friday,Morning shift (Hardgoods),Bob
+Friday,Evening shift (Nightfill),Isabel
+Friday,Morning shift (Checkouts),Grace
+Friday,Morning shift (Softgoods),Emily
+Friday,Morning shift (Softgoods),Liam
+Saturday,Morning shift (Softgoods),Lucas
+Saturday,Morning shift (Checkouts),Grace
+Saturday,Morning shift (Customer Service),Henry
+Saturday,Morning shift (Softgoods),Alice
+Saturday,Morning shift (Checkouts),Liam
+Saturday,Evening shift (Nightfill),Frank
+Saturday,Morning shift (Hardgoods),Bob
+Sunday,Morning shift (Hardgoods),Bob
+Sunday,Morning shift (Softgoods),Emily
+Sunday,Morning shift (Softgoods),Jack
+Sunday,Evening shift (Nightfill),Frank
+Sunday,Morning shift (Checkouts),Noah
+Sunday,Morning shift (Customer Service),Charlotte
+Sunday,Morning shift (Checkouts),Liam

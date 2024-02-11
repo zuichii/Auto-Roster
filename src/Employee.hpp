@@ -11,7 +11,7 @@ class Employee{
     std::string name, email;
     bool morning, afternoon, evening, softgoods, hardgoods, checkouts, customer_service, nightfill;
 
-    Employee(int id, std::string email, std::string name, bool morning, bool afternoon, bool evening, bool softgoods, bool hardgoods, bool checkouts, bool customer_service, bool nightfill){
+    Employee(int id, std::string name, std::string email, bool morning, bool afternoon, bool evening, bool softgoods, bool hardgoods, bool checkouts, bool customer_service, bool nightfill){
         this->id = id;
         this->name = name;
         this->email = email;
